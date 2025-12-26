@@ -1,8 +1,8 @@
 class AwsSsoRefresh < Formula
   desc "Automatically refresh AWS SSO sessions before they expire"
   homepage "https://github.com/jhubbardsf/aws-sso-refresh"
-  url "https://github.com/jhubbardsf/aws-sso-refresh/archive/refs/tags/v1.0.2.tar.gz"
-  sha256 "c466322dddb64390713e268f710404b506179dcb4fd394cbd433b9145d704e89"
+  url "https://github.com/jhubbardsf/aws-sso-refresh/archive/refs/tags/v1.0.3.tar.gz"
+  sha256 "d953a67c3f90a38614499464d6e79228499b44b3247dc7d0ef92bbed08db3e82"
   license "MIT"
   head "https://github.com/jhubbardsf/aws-sso-refresh.git", branch: "main"
 
@@ -22,8 +22,12 @@ class AwsSsoRefresh < Formula
       To check your SSO session status:
         aws-sso-refresh status
 
-      The daemon will run every 10 minutes and refresh sessions
-      that are within 30 minutes of expiring.
+      The daemon will run every 10 minutes (configurable) and refresh
+      sessions that are within 30 minutes of expiring (configurable).
+
+      Configure check interval and threshold with:
+        export AWS_SSO_REFRESH_INTERVAL=5   # Check every 5 minutes (default: 10)
+        export AWS_SSO_REFRESH_THRESHOLD=5  # Refresh 5m before expiry (default: 30)
     EOS
   end
 
